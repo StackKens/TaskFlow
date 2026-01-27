@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 
-const TaskForm = ({ heading, paragraph, tasks, addTasks }) => {
+const TaskForm = ({ heading, paragraph, tasks, setTasks }) => {
   const [formData, setFormData] = useState({
     title: '',
     priority: 'High',
@@ -32,7 +32,7 @@ const TaskForm = ({ heading, paragraph, tasks, addTasks }) => {
     };
 
     // Add  newFormData to state
-    addTasks([newFormData, ...tasks]);
+    setTasks([newFormData, ...tasks]);
 
     // Reset the form fields
 

@@ -3,16 +3,20 @@ import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 
 const App = () => {
-  const [tasks, addTasks] = useState([]);
+  // Function to delete the task
+  const deleteTasks = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+  const [tasks, setTasks] = useState([]);
   return (
     <div>
       <TaskForm
         tasks={tasks}
-        addTasks={addTasks}
+        setTasks={setTasks}
         heading='TaskFlow'
         paragraph='Manage tasks, priorities, and deadlines in one place'
       />
-      <TaskList tasks={tasks} />
+      <TaskList deleteTasks={deleteTasks} tasks={tasks} />
     </div>
   );
 };
