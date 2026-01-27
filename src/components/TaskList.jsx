@@ -1,4 +1,6 @@
-const TaskList = ({ tasks }) => {
+import { FaTrash } from 'react-icons/fa';
+
+const TaskList = ({ tasks, deleteTask }) => {
   if (!tasks || tasks.length === 0) {
     return <p className='empty-state'>No tasks to show. Please add a task.</p>;
   }
@@ -9,10 +11,17 @@ const TaskList = ({ tasks }) => {
       <section className='task-list'>
         {tasks.map(({ id, title, description, priority, category }) => (
           <div key={id} className='task-card'>
-            <h3 className='task-title'>{title}</h3>
-
+            <div className='task-card-header'>
+              <h3 className='task-title'>{title}</h3>
+              <button
+                className='delete-btn'
+                aria-label='Delete task'
+                onClick={() => deleteTask(id)}
+              >
+                <FaTrash />
+              </button>
+            </div>
             <p className='task-description'>{description}</p>
-
             <div className='task-meta'>
               <span className={`priority ${priority.toLowerCase()}`}>
                 {priority}
