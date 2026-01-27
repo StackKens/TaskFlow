@@ -141,10 +141,13 @@ button:active {
 /* Task list */
 .task-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.3rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
   animation: fadeIn 0.5s ease-in;
 }
+
 /* Task card */
 .task-card {
   background-color: #1e1e1e;
@@ -208,6 +211,11 @@ button:active {
   padding-bottom: 10px;
 }
 
+.task-list-heading {
+  font-size: 1rem;
+  text-align: center;
+}
+
 /* Animations */
 @keyframes fadeIn {
   from {
@@ -241,6 +249,7 @@ button:active {
 }
 
 /* REsponsive design */
+
 @media (max-width: 768px) {
   .form-container form {
     grid-template-columns: 1fr;
