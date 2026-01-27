@@ -53,7 +53,7 @@ const TaskForm = ({ heading, paragraph, tasks, addTasks }) => {
       </div>
 
       <div className='form-container'>
-        <form action=''>
+        <form action='' onSubmit={submitForm}>
           <label htmlFor='title'>Title</label>
           <input
             type='text'
@@ -105,9 +105,7 @@ const TaskForm = ({ heading, paragraph, tasks, addTasks }) => {
               required
             ></textarea>
           </div>
-          <button type='submit' onClick={submitForm}>
-            Add task
-          </button>
+          <button type='submit'>Add task</button>
         </form>
       </div>
     </>
