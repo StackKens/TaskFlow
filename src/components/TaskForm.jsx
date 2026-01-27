@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const TaskForm = ({ heading, paragraph }) => {
+const TaskForm = ({ heading, paragraph, tasks, addTasks }) => {
   const [formData, setFormData] = useState({
     title: '',
     priority: 'High',
@@ -15,8 +15,35 @@ const TaskForm = ({ heading, paragraph }) => {
       ...prev,
       [e.target.name]: e.target.value,
     }));
+  };
 
-    console.log(formData);
+  const submitForm = (e) => {
+    e.preventDefault();
+
+    // validation
+    if (!formData.title || !formData.description) return;
+
+    // Create new formData object
+
+    const newFormData = {
+      id: Date.now(),
+      ...formData,
+    };
+
+    // Add  newFormData to state
+    addTasks([newFormData, ...tasks]);
+
+    // Reset the form fields
+
+    setFormData({
+      title: '',
+      priority: 'High',
+      category: 'Work',
+      description: '',
+      status: '',
+      dueDate: '',
+      createdAt: '',
+    });
   };
   return (
     <>
@@ -78,6 +105,9 @@ const TaskForm = ({ heading, paragraph }) => {
               required
             ></textarea>
           </div>
+          <button type='submit' onClick={submitForm}>
+            Add task
+          </button>
         </form>
       </div>
     </>
