@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FaPlus } from 'react-icons/fa';
 
 const TaskForm = ({ heading, paragraph, tasks, addTasks }) => {
   const [formData, setFormData] = useState({
@@ -107,7 +108,10 @@ const TaskForm = ({ heading, paragraph, tasks, addTasks }) => {
                 placeholder='Add description'
               ></textarea>
             </div>
-            <button type='submit'>Add task +</button>
+            <button type='submit' className='add-task-btn'>
+              <FaPlus className='btn-icon' />
+              <span>Add task</span>
+            </button>
           </form>
         </div>
       </div>

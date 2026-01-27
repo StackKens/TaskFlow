@@ -95,6 +95,15 @@ textarea {
   min-height: 100px;
 }
 
+.add-task-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-icon {
+  font-size: 0.9rem;
+}
+
 /* Form submit-button */
 button {
   grid-column: 1 / -1;
