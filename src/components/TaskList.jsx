@@ -1,6 +1,6 @@
 import { FaTrash } from 'react-icons/fa';
 
-const TaskList = ({ tasks, setTasks }) => {
+const TaskList = ({ tasks, deleteTasks }) => {
   if (!tasks || tasks.length === 0) {
     return <p className='empty-state'>No tasks to show. Please add a task.</p>;
   }
@@ -16,7 +16,7 @@ const TaskList = ({ tasks, setTasks }) => {
               <button
                 className='delete-btn'
                 aria-label='Delete task'
-                onClick={() => setTasks(id)}
+                onClick={() => deleteTasks(id)}
               >
                 <FaTrash />
               </button>
