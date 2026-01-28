@@ -24,19 +24,14 @@ body {
 }
 
 /* Header */
-.app-header {
+.form-container h1 {
   margin-bottom: 2rem;
   animation: fadeInDown 0.6s ease-out;
 }
 
-.app-header h1 {
-  font-size: 2.2rem;
-  color: #ffffff;
-}
-
-.app-header p {
-  margin-top: 0.5rem;
+.form-container p {
   color: #a8dadc;
+  padding: 15px 0;
 }
 
 /* Form container */

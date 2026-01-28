@@ -1,5 +1,4 @@
-import { FaTrash, FaEdit } from 'react-icons/fa';
-
+import { FaEdit, FaTrash } from 'react-icons/fa';
 const TaskList = ({ tasks, deleteTasks, onEditTask }) => {
   if (!tasks || tasks.length === 0) {
     return <p className='empty-state'>No tasks to show. Please add a task.</p>;
