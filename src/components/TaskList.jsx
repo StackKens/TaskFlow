@@ -1,4 +1,4 @@
-import { FaTrash } from 'react-icons/fa';
+import { FaTrash, FaEdit } from 'react-icons/fa';
 
 const TaskList = ({ tasks, deleteTasks }) => {
   if (!tasks || tasks.length === 0) {
@@ -13,13 +13,19 @@ const TaskList = ({ tasks, deleteTasks }) => {
           <div key={id} className='task-card'>
             <div className='task-card-header'>
               <h3 className='task-title'>{title}</h3>
-              <button
-                className='delete-btn'
-                aria-label='Delete task'
-                onClick={() => deleteTasks(id)}
-              >
-                <FaTrash />
-              </button>
+              <div className='task-actions'>
+                <button className='edit-btn' aria-label='Edit task'>
+                  <FaEdit />
+                </button>
+
+                <button
+                  className='delete-btn'
+                  aria-label='Delete task'
+                  onClick={() => deleteTasks(id)}
+                >
+                  <FaTrash />
+                </button>
+              </div>
             </div>
             <p className='task-description'>{description}</p>
             <div className='task-meta'>

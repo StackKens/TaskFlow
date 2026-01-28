@@ -316,3 +316,30 @@ button[type='submit']:active {
     gap: 0;
   }
 }
+
+.task-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.edit-btn {
+  background: transparent;
+  border: none;
+  color: #64b5f6; /* soft blue */
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 6px;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.edit-btn:hover {
+  background-color: rgba(100, 181, 246, 0.12);
+  transform: scale(1.05);
+}
+
+.edit-btn:active {
+  transform: scale(0.95);
+}
