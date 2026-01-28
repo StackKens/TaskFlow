@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import TaskList from './components/TaskList';
-import TaskFormEditMode from './components/TaskFormEditMode';
+import TaskForm from './components/TaskForm';
 
 const App = () => {
   // Function to delete the task
