@@ -63,6 +63,11 @@ const TaskForm = ({
 
   return (
     <div className='form-container'>
+      <img
+        src='/src/assets/taskFlow.png'
+        alt='TaskFlow Logo'
+        className='app-logo'
+      />
       <h1>{heading}</h1>
       <p>{paragraph}</p>
 

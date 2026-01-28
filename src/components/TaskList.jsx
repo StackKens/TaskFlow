@@ -14,7 +14,7 @@ const TaskList = ({ tasks, deleteTasks, onEditTask }) => {
               <h3 className='task-title'>{task.title}</h3>
               <div className='task-actions'>
                 <button
-                  aria-label='Edit -task'
+                  aria-label='Edit-task'
                   onClick={() => onEditTask(task)}
                   className='edit-btn'
                 >

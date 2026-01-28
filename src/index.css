@@ -338,3 +338,15 @@ button[type='submit']:active {
 .edit-btn:active {
   transform: scale(0.95);
 }
+
+.app-logo {
+  width: 85px;
+  height: 85px;
+  display: block;
+  /* margin: 0 auto 1rem auto; */
+  cursor: pointer;
+}
+.app-logo:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
