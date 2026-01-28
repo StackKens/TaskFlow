@@ -1,121 +1,122 @@
-import { useState } from 'react';
-import { FaPlus } from 'react-icons/fa';
+import { useEffect, useRef, useState } from 'react';
 
-const TaskForm = ({ heading, paragraph, tasks, setTasks }) => {
-  const [formData, setFormData] = useState({
-    title: '',
-    priority: 'High',
-    category: 'Work',
-    description: '',
-    status: '',
-    dueDate: '',
-    createdAt: '',
-  });
-  const handleFormChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
+const TaskForm = ({
+  tasks,
+  setTasks,
+  editingTask,
+  onEditTask,
+  heading,
+  paragraph,
+}) => {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [priority, setPriority] = useState('Low');
+  const [category, setCategory] = useState('Work');
 
-  const submitForm = (e) => {
+  const titleRef = useRef(null);
+  const isEditing = Boolean(editingTask);
+
+  // Sync form when editing
+  useEffect(() => {
+    if (editingTask) {
+      setTitle(editingTask.title);
+      setDescription(editingTask.description);
+      setPriority(editingTask.priority);
+      setCategory(editingTask.category);
+
+      requestAnimationFrame(() => {
+        titleRef.current?.focus();
+      });
+    }
+  }, [editingTask]);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
+    if (!title.trim()) return;
 
-    // validation
-    if (!formData.title || !formData.description) return;
+    if (isEditing) {
+      onEditTask({
+        ...editingTask,
+        title,
+        description,
+        priority,
+        category,
+      });
+    } else {
+      setTasks([
+        ...tasks,
+        {
+          id: Date.now(),
+          title,
+          description,
+          priority,
+          category,
+        },
+      ]);
+    }
 
-    // Create new formData object
-
-    const newFormData = {
-      id: Date.now(),
-      ...formData,
-    };
-
-    // Add  newFormData to state
-    setTasks([newFormData, ...tasks]);
-
-    // Reset the form fields
-
-    setFormData({
-      title: '',
-      priority: 'High',
-      category: 'Work',
-      description: '',
-      status: '',
-      dueDate: '',
-      createdAt: '',
-    });
+    setTitle('');
+    setDescription('');
+    setPriority('Low');
+    setCategory('Work');
   };
+
   return (
-    <>
-      <div className='app-container'>
-        <div className='app-header'>
-          <h1>{heading}</h1>
-          <p>{paragraph}</p>
-        </div>
+    <div className='form-container'>
+      <h1>{heading}</h1>
+      <p>{paragraph}</p>
 
-        <div className='form-container'>
-          <form action='' onSubmit={submitForm}>
-            <label htmlFor='title'>Title</label>
-            <input
-              type='text'
-              placeholder='Add new task'
-              name='title'
-              value={formData.title}
-              required
-              onChange={handleFormChange}
-            />
+      <form onSubmit={handleSubmit}>
+        {/* Title */}
+        <label htmlFor='title'>Task Title</label>
+        <input
+          id='title'
+          ref={titleRef}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder='Task title'
+        />
 
-            <div>
-              <label htmlFor='priority'>Priority</label>
-              <select
-                name='priority'
-                id='priority'
-                value={formData.priority}
-                onChange={handleFormChange}
-                required
-              >
-                <option value='High'>High</option>
-                <option value='Medium'>Medium</option>
-                <option value='Low'>Low</option>
-              </select>
-            </div>
+        {/* Priority */}
+        <label htmlFor='priority'>Priority</label>
+        <select
+          id='priority'
+          value={priority}
+          onChange={(e) => setPriority(e.target.value)}
+        >
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
 
-            <div>
-              <label htmlFor='category'>Category</label>
-              <select
-                name='category'
-                id='category'
-                value={formData.category}
-                onChange={handleFormChange}
-                required
-              >
-                <option value='Work'>Work</option>
-                <option value='School'>School</option>
-                <option value='Personal'>Personal</option>
-                <option value='Meeting'>Meeting</option>
-              </select>
-            </div>
+        {/* Category */}
+        <label htmlFor='category'>Category</label>
+        <select
+          id='category'
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          <option>Work</option>
+          <option>School</option>
+          <option>Personal</option>
+          <option>Meeting</option>
+        </select>
 
-            <div className='task-description'>
-              <label htmlFor='description'>Description</label>
-              <textarea
-                name='description'
-                id='description'
-                value={formData.description}
-                onChange={handleFormChange}
-                required
-                placeholder='Add description'
-              ></textarea>
-            </div>
-            <button type='submit' className='add-task-btn'>
-              <FaPlus className='btn-icon' />
-              <span>Add task</span>
-            </button>
-          </form>
-        </div>
-      </div>
-    </>
+        {/* Description */}
+        <label htmlFor='description' className='task-description'>
+          Description
+        </label>
+        <textarea
+          id='description'
+          className='task-description'
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder='Add task description'
+        />
+
+        <button type='submit'>{isEditing ? 'Update Task' : 'Add Task'}</button>
+      </form>
+    </div>
   );
 };
 
