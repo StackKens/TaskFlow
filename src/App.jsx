@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import TaskList from './components/TaskList';
 import TaskForm from './components/TaskForm';
-
 const App = () => {
   // Function to delete the task
   const deleteTasks = (id) => {

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import logo from '../assets/taskFlow.png';
 
 const TaskForm = ({
   tasks,
@@ -63,11 +64,7 @@ const TaskForm = ({
 
   return (
     <div className='form-container'>
-      <img
-        src='/src/assets/taskFlow.png'
-        alt='TaskFlow Logo'
-        className='app-logo'
-      />
+      <img src={logo} alt='TaskFlow Logo' className='app-logo' />
       <h1>{heading}</h1>
       <p>{paragraph}</p>
 
