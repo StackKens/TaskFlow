@@ -8,7 +8,6 @@ TaskFlow is a web application to manage tasks effectively, focusing on productiv
 
 - Add, edit, delete tasks
 - Task details: title, description, priority, category, due date, status
-- Filter and sort by priority, category, status, and due date
 - Task completion toggle
 - Overdue task highlighting
 - Search tasks by title or category
