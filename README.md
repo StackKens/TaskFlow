@@ -31,7 +31,7 @@ TaskFlow is a web application to manage tasks effectively, focusing on productiv
 1. Clone the repo
 
 ```bash
-git clone https://github.com/stackkens/TaskFlow.git
+git clone https://github.com/Stackkens/TaskFlow.git
 cd TaskFlow
 npm install
 npm run dev
