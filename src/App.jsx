@@ -44,7 +44,7 @@ const App = () => {
         editingTask={editingTask}
         onEditTask={editTask}
         heading='TaskFlow'
-        paragraph='Manage tasks, priorities, and deadlines in one place'
+        paragraph='Manage tasks, priorities in one place'
       />
 
       <TaskList

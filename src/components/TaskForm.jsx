@@ -115,7 +115,6 @@ const TaskForm = ({
           onChange={(e) => setDescription(e.target.value)}
           placeholder='Add task description'
         />
-
         <button type='submit'>{isEditing ? 'Update Task' : 'Add Task'}</button>
       </form>
     </div>
